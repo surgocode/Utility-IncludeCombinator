@@ -1,5 +1,11 @@
 # include-combinator
-Inspired by Adminer (adminer.org), an attempt a combining multiple includes into one file.
+
+Combindes multiple includes, files and remote links into one file. 
+
+- Inspired a bit by Adminer (adminer.org)
+- Kind of a simpler-to-use, more flexible Composer in PHP
+- Helpful for building via DRY (do not repeat yourself) and atomic principles
+
 
 ## Initial version
 
