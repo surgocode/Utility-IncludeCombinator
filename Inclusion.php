@@ -7,23 +7,6 @@ include('getFilesFromDir.php');
 include('getFilesFromRemote.php');
 
 
-/*
- Adding something like this back ... 
- 
- 
-    if ($stats === 'emoji' || $stats === 'text') {
-        return StatsDisplay($fullPaths, $display);
-    } elseif (!$stats) {
-        return $fullPaths;
-    } else {
-        return ''; // Return an empty string if stats is set but not to 'text_csv' or 'array'
-    }
-
-
- */
-
-
-
 /**
  * Inclusion
  * 
@@ -36,9 +19,11 @@ include('getFilesFromRemote.php');
  * @param string $action Whether to 'include' or 'merge' the files. Default is 'include'.
  * @param mixed $depth The depth for directory scanning. Default is 'all' (full directory scan), or specify an integer depth.
  * @param string|null $mergedFilePath The path where the merged content should be written (only applicable for 'merge' action).
+ * @param string $outputType The type of output for stats (bool, text, emoji). Default is 'bool'.
+ * @param string $displayType The type of display (array, text_csv). Default is 'array'.
  * @return void
  */
-function Inclusion($data, $action = 'include', $depth = 'all', $mergedFilePath = null) {
+function Inclusion($data, $action = 'include', $depth = 'all', $mergedFilePath = null, $outputType = 'bool', $displayType = 'array') {
     // If the data is a directory path, scan the directory for files
     if (is_string($data) && is_dir($data)) {
         $files = getFilesFromDirectory($data, $depth);
@@ -52,6 +37,15 @@ function Inclusion($data, $action = 'include', $depth = 'all', $mergedFilePath =
         echo "No valid files found.\n";
         return;
     }
+
+    // Check file status and generate stats
+    $fileStats = [];
+    foreach ($files as $file) {
+        $fileStats[] = fileStatus($file, $file, $outputType); // Use file path for both name and path here
+    }
+
+    // Display file stats
+    echo StatsDisplay($fileStats, $displayType) . "\n";
 
     // Determine whether to include or merge the files
     if ($action === 'merge') {
