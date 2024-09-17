@@ -1,0 +1,15 @@
+"path": "path/to/my/snippets",
+"files": [
+    "api_requests",  
+    "surgo_table_td",
+    "surgo_table_css_1",
+    "pretty_array",
+    "surgo_inputs",
+    "time_ago",
+    "time_ago2",
+    "time_test",
+    "debug"
+],
+"suffix": ".php",
+"stats": "emoji",
+"display": "text_csv"

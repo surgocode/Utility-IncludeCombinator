@@ -7,6 +7,23 @@ include('getFilesFromDir.php');
 include('getFilesFromRemote.php');
 
 
+/*
+ Adding something like this back ... 
+ 
+ 
+    if ($stats === 'emoji' || $stats === 'text') {
+        return StatsDisplay($fullPaths, $display);
+    } elseif (!$stats) {
+        return $fullPaths;
+    } else {
+        return ''; // Return an empty string if stats is set but not to 'text_csv' or 'array'
+    }
+
+
+ */
+
+
+
 /**
  * Inclusion
  * 
