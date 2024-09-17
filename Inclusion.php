@@ -22,9 +22,6 @@ include('getFilesFromRemote.php');
  * @return void
  */
 function Inclusion($data, $action = 'include', $depth = 'all', $mergedFilePath = null) {
-    // If depth is 'all', set to null (which means no depth limit in the getFilesFromDirectory function)
-    $depth = ($depth === 'all') ? null : $depth;
-
     // If the data is a directory path, scan the directory for files
     if (is_string($data) && is_dir($data)) {
         $files = getFilesFromDirectory($data, $depth);
